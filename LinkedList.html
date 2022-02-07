@@ -1,0 +1,102 @@
+<html>
+<body>
+    <script>
+        class Node{
+    constructor(data,next=null){
+        this.data=data;
+        this.next=next;
+    }
+}
+const node1=new Node(100);
+
+console.log(node1); //afficher Node { data: 100, next: null }
+class Linkedlist{
+    constructor(){
+        this.head=null;
+        this.size=0;
+    }
+    //Insert fiest node
+    insertForst(data){
+        this.head=new Node(data,this.head/*this.next*/);
+        this.next++;
+    }
+    //Insert last node
+     insertLast(data){
+         let node=new Node(data);
+         let current;
+         if(!this.head){
+             this.head=node;
+         }else{
+            current=this.head;
+            while(current.next){
+                current=current.next;
+            }
+            current.next=node;
+         }
+         this.size++;
+     }
+    //print list data 
+    printListData(){
+    let current=this.head;
+    while(current){
+        console.log(current.data);
+        current=current.next;
+    }
+    }
+    // inseert index
+     insertAt(data,index){
+         if(index>0 && index>this.next){
+             return;
+           }
+         if(index===0){
+            this.head=new Node (data,this.head);
+           return ;
+    
+     }
+         const node=new Node(data);
+    let current,previous;
+         current=this.head;
+         let count=0;
+         while(count<index){
+             previous=current;
+             count++;
+             current=current.next;
+         }
+         node.next=current;
+         previous.next=node;
+         this.size++;
+     }
+    //git at
+     gitAt(index){
+         let current=this.head;
+         let count=0;
+     while(current){
+         if(count==index){
+             console.log(current.data);
+         }
+         count++;
+         current= current.next;
+     }
+     return null;
+    }
+    
+    
+    
+    
+}
+ const linkedlist1=new Linkedlist();
+ linkedlist1.insertForst(200);
+  console.log(linkedlist1);
+  linkedlist1.insertForst(300);
+ console.log(linkedlist1);
+ linkedlist1.insertForst(400);
+ console.log(linkedlist1);
+ console.log("//****List data ****//");
+linkedlist1.insertLast(500);
+ linkedlist1.insertAt(600,0);// Ajouter 600 sur index 0
+  linkedlist1.printListData();
+  console.log("index 2");
+ linkedlist1.gitAt (2)
+    </script>
+</body>
+</html>
