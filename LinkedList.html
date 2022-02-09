@@ -79,7 +79,32 @@ class Linkedlist{
      }
      return null;
     }
-    
+    // remove at
+    removeAt(index){
+        if(index>0 && index>this.size){
+            return;
+        }
+        let current=this.head;
+        let previous;
+        let count=0
+        //rmove last;
+        if(index===0){
+            this.head=current.next;
+        }else{
+            while(count<index){
+                count++;
+                previous=current;
+                current=current.next;
+            }
+            previous.next=current.next;
+        }
+        this.size--;
+    }
+    // clear list
+    clearList(){
+        this.head=null;
+        this.size=0;
+    }
     
     
     
@@ -97,6 +122,12 @@ linkedlist1.insertLast(500);
   linkedlist1.printListData();
   console.log("index 2");
  linkedlist1.gitAt (2)
+ linkedlist1.removeAt(1);
+ console.log("//****List data ****//");
+ linkedlist1.printListData();
+ linkedlist1.clearList();
+ console.log("//****List data ****//");
+ linkedlist1.printListData();
     </script>
 </body>
 </html>
